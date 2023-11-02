@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/home" class="nav-link {{ request()->is('home') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                     Dashboard
@@ -122,15 +122,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/kecamatan" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <a href="/kecamatan" class="nav-link  {{ request()->is('kecamatan') ? 'active' : ''}}">
+                <i class="nav-icon fas fa-cloud"></i>
                 <p>
                     Kecamatan
                 </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/sekolah" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                     Sekolah
@@ -223,12 +223,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2023 <a href="https://www.instagram.com/alfika_nf">Alfika Nurfadia</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
+<script>
+  window.setTimeout(function() {
+    $(".alert").fadeTo(500,0).slideUp(500,function(){
+      $(this).remove();
+    });
+  },3000);
+</script>
 
 </body>
 </html>

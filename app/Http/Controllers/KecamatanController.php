@@ -55,4 +55,45 @@ class KecamatanController extends Controller
     $this->KecamatanModel->InsertData($data);
     return redirect()->route('kecamatan')->with('pesan', 'Data Berhasil Di Tambahkan');
     }
+
+    public function edit($id_kecamatan)
+    {
+        {
+            $data = [
+                'title' => 'Edit Data Kecamatan',
+                'kecamatan' => $this->KecamatanModel->DetailData($id_kecamatan),
+            ];
+            return view('admin.kecamatan.v_edit', $data);
+        }
+    }
+
+    public function update($id_kecamatan)
+    {
+        request()->validate([
+            'kecamatan' => 'required',
+            'warna' => 'required',
+            'geojson' => 'required',
+        ],
+        [
+            'kecamatan.required' => 'Wajib Diisi!',
+            'warna.required' => 'Wajib Diisi!',
+            'geojson.required' => 'Wajib Diisi!',
+        ]
+    );
+
+    $data = [
+        'kecamatan' => Request()->kecamatan,
+        'warna' => Request()->warna,
+        'geojson' => Request()->geojson,
+    ];
+
+    $this->KecamatanModel->UpdateData($id_kecamatan, $data);
+    return redirect()->route('kecamatan')->with('pesan', 'Data Berhasil Di Update');
+    }
+
+    public function delete($id_kecamatan)
+    {
+        $this->KecamatanModel->DeleteData($id_kecamatan);
+    return redirect()->route('kecamatan')->with('pesan', 'Data Berhasil Di Hapus');
+    }
 }

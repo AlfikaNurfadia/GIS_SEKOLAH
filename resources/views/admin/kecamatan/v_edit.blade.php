@@ -4,9 +4,9 @@
 
 <div class="col-md-12">
     <div class="card-header">
-        <h3 class="card-title">Tambah Data</h3>
+        <h3 class="card-title">Edit Data</h3>
     </div>
-    <form action="/kecamatan/insert" method="POST">
+    <form action="/kecamatan/update/{{ $kecamatan->id_kecamatan }}" method="POST">
         @csrf
         <div class="card-body">
             <div class="card-body">
@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Kecamatan</label>
-                            <input name="kecamatan" class="form-control" placeholder="Kecamatan">
+                            <input name="kecamatan" value="{{ $kecamatan->kecamatan }}" class="form-control" placeholder="Kecamatan">
                             <div class="text-danger">
                                 @error('kecamatan')
                                     {{ $message }}
@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label>Warna</label>
                             <div class="input-group my-colorpicker2" placeholder="Warna">
-                                <input name="warna" type="text" class="form-control">
+                                <input name="warna" value="{{ $kecamatan->warna }}" type="text" class="form-control">
                                 <div class="input-group-append">
                                 <span class="input-group-text"><i class="fa fa-square"></i></span>
                                 </div>
@@ -41,7 +41,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label>GeoJSON</label>
-                            <textarea name="geojson" rows="7" class="form-control" placeholder="GeoJSON"></textarea>
+                            <textarea name="geojson" rows="7" class="form-control" placeholder="GeoJSON">{{ $kecamatan->geojson }}</textarea>
                             <div class="text-danger">
                                 @error('geojson')
                                     {{ $message }}
