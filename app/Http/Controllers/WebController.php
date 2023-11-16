@@ -20,4 +20,9 @@ class WebController extends Controller
         ];
         return view('layouts.v_web', $data);
     }
+
+    public function kecamatan($id_kecamatan)
+    {
+
+    }
 }

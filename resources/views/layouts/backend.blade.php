@@ -43,6 +43,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('AdminLTE')}}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('AdminLTE')}}/dist/js/demo.js"></script>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -99,7 +105,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('AdminLTE')}}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('foto')}}/{{ Auth::user()->foto }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -130,53 +136,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/sekolah" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+              <a href="/kategori" class="nav-link {{ request()->is('kategori') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-school"></i>
+              <p>
+                  Kategori
+              </p>
+              </a>
+          </li>
+            <li class="nav-item">
+                <a href="/sekolah" class="nav-link {{ request()->is('sekolah') ? 'active' : ''}}">
+                <i class="nav-icon fas fa-graduation-cap"></i>
                 <p>
                     Sekolah
                 </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Jurusan
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a href="/user" class="nav-link {{ request()->is('user') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                     User
                 </p>
                 </a>
             </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

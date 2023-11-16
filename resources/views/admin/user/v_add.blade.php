@@ -7,17 +7,17 @@
         <div class="card-header">
             <h3 class="card-title">Tambah Data</h3>
         </div>
-        <form action="/kecamatan/insert" method="POST">
+        <form action="/user/insert" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Kecamatan</label>
-                                <input name="kecamatan" class="form-control" placeholder="Kecamatan">
+                                <label>Nama User</label>
+                                <input name="name" value="{{ old('name') }}" class="form-control" placeholder="Nama">
                                 <div class="text-danger">
-                                    @error('kecamatan')
+                                    @error('name')
                                         {{ $message }}
                                     @enderror
                                 </div>
@@ -25,26 +25,32 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Warna</label>
-                                <div class="input-group my-colorpicker2" placeholder="Warna">
-                                    <input name="warna" type="text" class="form-control">
-                                    <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fa fa-square"></i></span>
-                                    </div>
-                                </div>
+                                <label>Email</label>
+                                <input name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">
                                 <div class="text-danger">
-                                    @error('warna')
-                                        {{ $message}}
+                                    @error('email')
+                                        {{ $message }}
                                     @enderror
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="form-group">
-                                <label>GeoJSON</label>
-                                <textarea name="geojson" rows="7" class="form-control" placeholder="GeoJSON"></textarea>
+                                <label>Password</label>
+                                <input name="password" value="{{ old('password') }}" class="form-control" placeholder="Password">
                                 <div class="text-danger">
-                                    @error('geojson')
+                                    @error('password')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <input type="file" name="foto" class="form-control" accept="image/*,png,jpg">
+                                <div class="text-danger">
+                                    @error('foto')
                                         {{ $message }}
                                     @enderror
                                 </div>
@@ -54,23 +60,10 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Simpan</button>
-                    <a href="/kecamatan" class="btn btn-warning float-right">Cancel</a>
+                    <a href="/user" class="btn btn-warning float-right">Cancel</a>
                 </div>
             </div>
         </form>
     </div>
 </div>
-
-<!-- bootstrap color picker -->
-<script src="{{asset('AdminLTE')}}/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<script>
-        //Colorpicker
-        $('.my-colorpicker1').colorpicker()
-        //color picker with addon
-        $('.my-colorpicker2').colorpicker()
-
-        $('.my-colorpicker2').on('colorpickerChange', function(event) {
-            $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-        })
-</script>
 @endsection
