@@ -46,6 +46,11 @@ class SekolahController extends Controller
             'alamat' => 'required',
             'deskripsi_sekolah' => 'required',
             'icon' => 'required|max:1024',
+            'akreditasi' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
+            'rombel' => 'required',
+            'jurusan' => 'required',
         ], [
             'nama_sekolah.required' => 'Wajib Diisi!',
             'npsn_sekolah.required' => 'Wajib Diisi!',
@@ -55,6 +60,11 @@ class SekolahController extends Controller
             'alamat.required' => 'Wajib Diisi!',
             'deskripsi_sekolah.required' => 'Wajib Diisi!',
             'icon.required' => 'Wajib Diisi!',
+            'akreditasi' => 'Wajib Diisi!',
+            'visi' => 'Wajib Diisi!',
+            'misi' => 'Wajib Diisi!',
+            'rombel' => 'Wajib Diisi!',
+            'jurusan' => 'Wajib Diisi!',
         ]);
 
         $file = Request()->icon;
@@ -70,7 +80,12 @@ class SekolahController extends Controller
             'alamat' => Request()->alamat,
             'posisi' => Request()->posisi,
             'deskripsi_sekolah' => Request()->deskripsi_sekolah,
-            'icon' => $filename
+            'icon' => $filename,
+            'akreditasi' => Request()->akreditasi,
+            'visi' => Request()->visi,
+            'misi' => Request()->misi,
+            'rombel' => Request()->rombel,
+            'jurusan' => Request()->jurusan,
         ];
         $this->SekolahModel->InsertData($data);
         return redirect()->route('sekolah')->with('pesan', 'Data Berhasil Di Simpan');
@@ -98,6 +113,11 @@ class SekolahController extends Controller
             'alamat' => 'required',
             'deskripsi_sekolah' => 'required',
             'icon' => 'max:1024',
+            'akreditasi' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
+            'rombel' => 'required',
+            'jurusan' => 'required',
         ], [
             'nama_sekolah.required' => 'Wajib Diisi!',
             'npsn_sekolah.required' => 'Wajib Diisi!',
@@ -107,6 +127,12 @@ class SekolahController extends Controller
             'alamat.required' => 'Wajib Diisi!',
             'deskripsi_sekolah.required' => 'Wajib Diisi!',
             'icon.required' => 'Wajib Diisi!',
+            'akreditasi' => 'Wajib Diisi!',
+            'visi' => 'Wajib Diisi!',
+            'misi' => 'Wajib Diisi!',
+            'rombel' => 'Wajib Diisi!',
+            'jurusan' => 'Wajib Diisi!',
+        ], [
         ]);
 
         if (Request()->icon <> "") {
@@ -127,7 +153,12 @@ class SekolahController extends Controller
                 'alamat' => Request()->alamat,
                 'posisi' => Request()->posisi,
                 'deskripsi_sekolah' => Request()->deskripsi_sekolah,
-                'icon' => $filename
+                'icon' => $filename,
+                'akreditasi' => Request()->akreditasi,
+                'visi' => Request()->visi,
+                'misi' => Request()->misi,
+                'rombel' => Request()->rombel,
+                'jurusan' => Request()->jurusan,
             ];
             $this->SekolahModel->UpdateData($id_sekolah, $data);
         } else {
@@ -139,7 +170,12 @@ class SekolahController extends Controller
                 'id_kecamatan' => Request()->id_kecamatan,
                 'alamat' => Request()->alamat,
                 'posisi' => Request()->posisi,
-                'deskripsi_sekolah' => Request()->deskripsi_sekolah
+                'deskripsi_sekolah' => Request()->deskripsi_sekolah,
+                'akreditasi' => Request()->akreditasi,
+                'visi' => Request()->visi,
+                'misi' => Request()->misi,
+                'rombel' => Request()->rombel,
+                'jurusan' => Request()->jurusan,
             ];
             $this->SekolahModel->UpdateData($id_sekolah, $data);
         }

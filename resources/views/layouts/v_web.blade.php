@@ -14,6 +14,7 @@
 	@foreach ($kecamatan as $data )
 		var data{{ $data->id_kecamatan }} = L.layerGroup();
 	@endforeach
+	var sekolah = L.layerGroup();
 
     var map = L.map('map', {
 		center: [-3.314364214631249, 114.59249471889544],
@@ -22,6 +23,7 @@
 		@foreach ($kecamatan as $data)
 			data{{ $data->id_kecamatan }},
 		@endforeach
+		sekolah, 
 	]
 	});
 
@@ -33,6 +35,7 @@
     @foreach ($kecamatan as $data)
     	"{{ $data->kecamatan }}" : data{{ $data->id_kecamatan }},
     @endforeach
+	"sekolah" : sekolah, 
 };
 
 	L.control.layers(baseMaps, overlayer).addTo(map);
@@ -47,8 +50,22 @@
 		}).addTo(data{{ $data->id_kecamatan}});
 	@endforeach
 
+	@foreach ($sekolah as $data)	
+		// var iconsekolah = L.icon({
+		// 	iconUrl: '{{ asset('icon') }}/{{ $data->icon }}',
+		// 	iconSize: [38, 55],
+		// });
 
+		// L.marker([<?= $data->posisi ?>], {icon: iconsekolah}).addTo(map);
+
+		var informasi = '<table style="border-collapse:collapse;border-spacing:0" class="tg"><tr><td colspan="2" style="text-align:center"><img src="{{ asset('icon') }}/{{ $data->icon }}" width="100px"></td></tr><tbody><tr><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">Nama </td><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{{ $data->nama_sekolah }}</td></tr><tr><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">NPSN</td><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{{ $data->npsn_sekolah }}</td></tr><tr><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">Status</td><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{{ $data->status }}</td></tr><tr><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">Akreditasi</td><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{{ $data->akreditasi }}</td></tr><tr><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">Alamat</td><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal">{{ $data->alamat }}</td></tr><tr><td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal" colspan="2" class="text-center"><a href="/detailsekolah/{{ $data->id_sekolah }}" class="btn btn-sm btn-default">Detail</a></td></tr></tbody></table>';
+
+		L.marker([<?= $data->posisi ?>])
+		.addTo(sekolah)
+		.bindPopup(informasi);
+	@endforeach
     
+	
 
 </script>
 @endsection

@@ -94,6 +94,72 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Akreditasi</label>
+                                <input name="akreditasi" class="form-control" placeholder="Akreditasi Sekolah">
+                                <div class="text-danger">
+                                    @error('akreditasi')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Rombongan Belajar</label>
+                                <input name="rombel" class="form-control" placeholder="Rombongan Belajar">
+                                <div class="text-danger">
+                                    @error('rombel')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <textarea name="deskripsi_sekolah" class="form-control" rows="5" placeholder="Deskripsi Sekolah"></textarea>
+                                <div class="text-danger">
+                                    @error('deskripsi_sekolah')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Visi</label>
+                                <textarea name="visi" class="form-control" rows="5" placeholder="Visi Sekolah"></textarea>
+                                <div class="text-danger">
+                                    @error('visi')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Misi</label>
+                                <textarea name="misi" class="form-control" rows="5" placeholder="Misi Sekolah"></textarea>
+                                <div class="text-danger">
+                                    @error('misi')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Jurusan</label>
+                                <textarea name="jurusan" class="form-control" rows="5" placeholder="Jurusan"></textarea>
+                                <div class="text-danger">
+                                    @error('jurusan')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label>Alamat</label>
@@ -120,17 +186,6 @@
                     <div class="col-ms-12">
                         <label>Map</label>
                         <div id="map" style="width: 100%; height: 300px;"></div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label>Deskripsi</label>
-                            <textarea name="deskripsi_sekolah" class="form-control" rows="5" placeholder="Deskripsi Sekolah"></textarea>
-                            <div class="text-danger">
-                                @error('deskripsi_sekolah')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="card-footer">

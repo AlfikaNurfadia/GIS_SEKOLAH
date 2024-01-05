@@ -52,12 +52,12 @@
       <div class="inner">
         <h3>{{ $user }}</h3>
 
-        <p>Jurusan</p>
+        <p>User</p>
       </div>
       <div class="icon">
-        <i class="fas fa-th"></i>
+        <i class="nav-icon fas fa-user"></i>
       </div>
-      <a href="/jurusan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="/user" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
   </div>
 @endsection

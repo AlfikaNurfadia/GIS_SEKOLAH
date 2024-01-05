@@ -11,26 +11,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('AdminLTE')}}/dist/css/adminlte.min.css">
+  <!-- Font Awesome -->
+ <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/fontawesome-free/css/all.min.css">
+ <!-- DataTables -->
+ <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+ <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+ <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="{{asset('AdminLTE')}}/dist/css/adminlte.min.css">
+ <!-- Bootstrap Color Picker -->
+ <link rel="stylesheet" href="{{asset('AdminLTE')}}/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
 
-  <!-- REQUIRED SCRIPTS -->
+ <!-- jQuery -->
+<script src="{{asset('AdminLTE')}}/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('AdminLTE')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{asset('AdminLTE')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('AdminLTE')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{asset('AdminLTE')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{asset('AdminLTE')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{asset('AdminLTE')}}/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('AdminLTE')}}/dist/js/demo.js"></script>
 
-    <!-- jQuery -->
-    <script src="{{asset('AdminLTE')}}/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{asset('AdminLTE')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="{{asset('AdminLTE')}}/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{asset('AdminLTE')}}/dist/js/demo.js"></script>
+<!-- Leaflet -->
+{{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" /> --}}
+{{-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> --}}
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+{{-- <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" /> --}}
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+{{-- <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script> --}}
 
 </head>
 <body class="hold-transition layout-top-nav">
@@ -40,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
       <a href="/" class="navbar-brand">
-        <img src="{{asset('AdminLTE')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{asset('AdminLTE')}}/dist/img/logogispas.png" alt="SIG Banjarmasin" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"><b>SMK Banjarmasin</b></span>
       </a>
 
@@ -57,15 +69,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Kecamatan</a>
+              <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Kecamatan</a>
+              <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                  @foreach ($kecamatan as $data)
+                      <li><a href="/kecamatan/{{ $data->id_kecamatan }}" class="dropdown-item">{{ $data->kecamatan }}</a></li>
+                  @endforeach
+              </ul>
+          </li>
+
+          {{-- <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Kategori</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Some action </a></li>
+                @foreach ($kategori as $data)
+                    <li><a href="/kategori/{{ $data->id_kategori }}" class="dropdown-item">{{ $data->nama_kategori }}</a></li>
+                @endforeach
             </ul>
-          </li>
+        </li> --}}
+
+        <li class="nav-item">
+          <a href="/semuadatasekolah" class="nav-link">Sekolah</a>
+        </li>
           
-          <li class="nav-item">
-            <a href="#" class="nav-link">Contact</a>
-          </li>
+          {{-- <li class="nav-item">
+            <a href="#" class="nav-link">About</a>
+          </li> --}}
           
         </ul>
 

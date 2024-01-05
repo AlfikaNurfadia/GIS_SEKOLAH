@@ -61,3 +61,10 @@ Route::post('/user/insert', [UserController::class, 'insert']);
 Route::get('/user/edit/{id}', [UserController::class, 'edit']);
 Route::post('/user/update/{id}', [UserController::class, 'update']);
 Route::get('/user/delete/{id_user}', [UserController::class, 'delete']);
+
+// Front-End
+Route::get('/kecamatan/{id_kecamatan}', [WebController::class, 'kecamatan']);
+Route::get('/kategori/{id_kategori}', [WebController::class, 'kategori']);
+Route::get('/detailsekolah/{id_sekolah}', [WebController::class, 'detailsekolah']);
+Route::get('/detailsekolah/{id_sekolah}', [WebController::class, 'detailsekolah']);
+Route::get('/semuadatasekolah', [WebController::class, 'semuadatasekolah']);

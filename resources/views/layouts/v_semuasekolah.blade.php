@@ -1,15 +1,10 @@
-@extends('layouts.backend')
-
+@extends('layouts.frontend')
 @section('content')
 
 <div class="col-md-12">
     <div class="card card-outline card-primary">
       <div class="card-header">
-        <h3 class="card-title">Data {{ $title }}</h3>
 
-        <div class="card-tools">
-          <a href="/sekolah/add" type="button" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> Tambah</a>
-        </div>
         <!-- /.card-tools -->
       </div>
       <!-- /.card-header -->
@@ -45,8 +40,7 @@
                     <td>{{ $data->kecamatan }}</td>
                     <td><img src="{{ asset('icon') }}/{{ $data->icon }}" alt="" width="70px"></td>
                     <td style="text-align:center">
-                      <a href="/sekolah/edit/{{ $data->id_sekolah }}" class="btn btn-sm btn-flat btn-warning"><i class="fa fa-edit"></i></a>
-                      <button class="btn btn-sm btn-flat btn-danger" data-toggle="modal" data-target="#delete{{ $data->id_sekolah }}"><i class="fa fa-trash"></i></button>
+                        <a href="/detailsekolah/{{ $data->id_sekolah }}" class="btn btn-primary btn-sm btn-default">Detail</a>
                     </td>
                 </tr>
                 @endforeach
@@ -82,8 +76,7 @@
   </div>
   @endforeach
 
-<!-- Page specific script -->
-<script>
+  <script>
     $(function () {
       $("#example1").DataTable({
         "responsive": true, "lengthChange": false, "autoWidth": false,
